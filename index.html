@@ -1,65 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="“UTF-8”" />
-    <meta
-      name="“viewport”"
-      content="“width"
-      ="device-width,"
-      initial-scale="1.0”"
-    />
-    <meta http-equiv="“X-UA-Compatible”" content="“ie" ="edge”" />
-    <link rel="“stylesheet”" href="“sytle.css”" />
-    <link rel=“stylesheet”
-    href=“https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css”
-    /> <link rel=“stylesheet”
-    href=“https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css”
-    />
-    <title>Weather Applciation</title>
-  </head>
 
-  <body>
-    <!-- NAVBAR -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="“stylesheet”" href="“sytle.css”" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <title>Weather Applciation</title>
+</head>
 
-    <aside>
-      <div>
+<body>
+
+</html>
+<!-- header section -->
+<header class="jumbotron jumbotron-fluid custom-jumbotron" id="header">
+  <div class="container text-center">
+    <h1>Weather Suggestion Application</h1>
+    <h2>Choose your location and never be bored again</h2>
+  </div>
+</header>
+
+<!-- container for all main assets -->
+<main class="container-fluid">
+  <div class="row">
+    <aside class="col-lg-3 pb-3">
+      <!-- card for user Input -->
+      <div class="card custom-card equal h-100">
+        <h3 class="card-header">
+          Instructions
+        </h3>
+        <div class="card-body">
+          <div class="card-text">
+            Find your City
+          </div>
+        </div>
         <input type="text" id="city-search" placeholder="London" />
         <button id="button">Search Activities</button>
+        <div class="card-footer">
+        </div>
       </div>
     </aside>
+    <!-- Column for returns -->
+    <div class=".col-12 .col-sm-6 .col-md-8">
+      <!-- weather of date return -->
+      <div class="card mb-3" id="displayWeather">
+        <div class="card-body">
+          <h3>Current Weather Details</h3>
+          <p class="card-text" id="currentWeather"></p>
+        </div>
 
-    <div>
-      <section id="displayWeather">
-        <h3>Current Weather Details</h3>
-        <p id="currentWeather"></p>
-      </section>
-
+        <!-- Activities Title -->
+      </div>
       <section id="displayActivities">
         <div id="activityHeading">
           <h3>Activity Suggestions</h3>
           <p id="activityText"></p>
         </div>
-        <div id="acivity">
-          <h4 id="activityTitle">Activity 1</h4>
-          <p id="activity1"></p>
+        <!-- activity number 1 card -->
+        <div class="card mb-3" id="acivity">
+          <div class="card-body">
+            <h4 id="activityTitle">Activity 1</h4>
+            <p class="card-text" id="activity1"></p>
+          </div>
         </div>
-        <div id="acivity">
-          <h4 id="activityTitle">Activity 2</h4>
-          <p id="activity2"></p>
+        <!-- activity number 2 card -->
+        <div class="card mb-3" id="activity">
+          <div class="card-body">
+            <h4 id="activityTitle">Activity 2</h4>
+            <p class="card-text" id="activity2"></p>
+          </div>
         </div>
-        <div id="acivity">
-          <h4 id="activityTitle">Activity 3</h4>
-          <p id="activity3"></p>
+        <!-- activity number 3 card -->
+        <div class="card mb-3" id="activity">
+          <div class="card-body">
+            <h4 id="activityTitle">Activity 3</h4>
+            <p class="card-text" id="activity3"></p>
+          </div>
         </div>
       </section>
-    </div>
-  </body>
+</main>
 
-  <!-- FOOTER -->
+<!-- footer -->
+<footer class="jumbotron jumbotron-fluid custom-jumbotron" id="footer">
+  <div class="container text-center">
+    <h5>Not happy with these choices shuffle and try again</h5>
+  </div>
+</footer>
 
-  <!-- Moment.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
-  <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="script.js"></script>
+</body>
+
+<!-- Moment.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="script.js"></script>
+
 </html>
+
+<!-- <aside>
+  <div>
+    <input type="text" id="city-search" placeholder="London" />
+    <button id="button">Search Activities</button>
+  </div>
+</aside> -->
+
+
+<!-- <div> -->
+<!-- <section id="displayWeather">
+    <h3>Current Weather Details</h3>
+    <p id="currentWeather"></p>
+  </section> -->
+
+<!-- <section id="displayActivities">
+    <div id="activityHeading">
+      <h3>Activity Suggestions</h3>
+      <p id="activityText"></p>
+    </div>
+    <div id="acivity">
+      <h4 id="activityTitle">Activity 1</h4>
+      <p id="activity1"></p>
+    </div>
+    <div id="acivity">
+      <h4 id="activityTitle">Activity 2</h4>
+      <p id="activity2"></p>
+    </div>
+    <div id="acivity">
+      <h4 id="activityTitle">Activity 3</h4>
+      <p id="activity3"></p>
+    </div>
+  </section>
+</div> -->
