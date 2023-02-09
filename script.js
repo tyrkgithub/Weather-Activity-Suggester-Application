@@ -2,6 +2,8 @@
 const userButton = $("#button");
 const apiKey = "12786491ac6b5851aca9bc20462fd30e";
 let activityType = "";
+let displayWeather = $("#displayWeather");
+let displayActivities = $("#displayActivities");
 
 // Call Weather API
 function callAPI() {
@@ -35,7 +37,8 @@ function callAPI() {
     }).then(function (result) {
       //   Variable for Current Weather
       let weatherMain = result.weather[0].description;
-      console.log(weatherMain);
+      let currentWeather = $("#currentWeather");
+      currentWeather.text("The current weather is " + weatherMain);
       //   Current Weather to Activity Key
       if (weatherMain == "broken clouds") {
         activityType = "education";
@@ -64,9 +67,29 @@ function callAPI() {
         url: queryURL,
         method: "GET",
       }).then(function (result) {
-        // Retreives Random Activity from the API
-        let activityFind = result.activity;
-        console.log(activityFind);
+        let activityText = $("#activityText");
+        activityText.text(
+          "Here are 3 suggestions, based on the the weather in " + userSearch
+        );
+        let activityFind1 = result.activity;
+        let activity1 = $("#activity1");
+        activity1.text(activityFind1);
+        $.ajax({
+          url: queryURL,
+          method: "GET",
+        }).then(function (result) {
+          let activityFind2 = result.activity;
+          let activity2 = $("#activity2");
+          activity2.text(activityFind2);
+        });
+        $.ajax({
+          url: queryURL,
+          method: "GET",
+        }).then(function (result) {
+          let activityFind3 = result.activity;
+          let activity3 = $("#activity3");
+          activity3.text(activityFind3);
+        });
       });
     });
   });
@@ -77,3 +100,15 @@ userButton.on("click", function (event) {
   event.preventDefault();
   callAPI();
 });
+
+// console.log(activityFind1);
+// let activity1Div = $("<div>");
+// let activity1 = $("<h5>");
+// let activity1Text = $("<p>");
+// activity1.text("Activity 1");
+// console.log(activity1);
+// activity1Text.text(
+//   "Your first suggested activity is " + activityFind1 + "!"
+// );
+// activity1Div.append(activity1, activity1Text);
+// });

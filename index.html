@@ -19,13 +19,44 @@
   </head>
 
   <body>
-    <div>
+    <!-- NAVBAR -->
+
+    <aside>
       <div>
         <input type="text" id="city-search" placeholder="London" />
         <button id="button">Search Activities</button>
       </div>
+    </aside>
+
+    <div>
+      <section id="displayWeather">
+        <h3>Current Weather Details</h3>
+        <p id="currentWeather"></p>
+      </section>
+
+      <section id="displayActivities">
+        <div id="activityHeading">
+          <h3>Activity Suggestions</h3>
+          <p id="activityText"></p>
+        </div>
+        <div id="acivity">
+          <h4 id="activityTitle">Activity 1</h4>
+          <p id="activity1"></p>
+        </div>
+        <div id="acivity">
+          <h4 id="activityTitle">Activity 2</h4>
+          <p id="activity2"></p>
+        </div>
+        <div id="acivity">
+          <h4 id="activityTitle">Activity 3</h4>
+          <p id="activity3"></p>
+        </div>
+      </section>
     </div>
   </body>
+
+  <!-- FOOTER -->
+
   <!-- Moment.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
   <!-- jQuery -->
