@@ -6,7 +6,6 @@ let activityType = "";
 // Call Weather API
 function callAPI() {
   let userSearch = $("#city-search").val();
-  console.log(userSearch);
   // City to Geo Location
   // Geo Location API
   let geoQueryURL =
@@ -36,49 +35,35 @@ function callAPI() {
     }).then(function (result) {
       //   Variable for Current Weather
       let weatherMain = result.weather[0].description;
+      console.log(weatherMain);
       //   Current Weather to Activity Key
-      if ((weatherMain = "broken clouds")) {
+      if (weatherMain == "broken clouds") {
         activityType = "education";
-      }
-      if ((weatherMain = "scattered clouds")) {
+      } else if (weatherMain == "scattered clouds") {
         activityType = "diy";
-      }
-      if ((weatherMain = "few clouds")) {
+      } else if (weatherMain == "few clouds") {
         activityType = "recreational";
-      }
-      if ((weatherMain = "clear sky")) {
+      } else if (weatherMain == "clear sky") {
         activityType = "social";
-      }
-      if ((weatherMain = "mist")) {
+      } else if (weatherMain == "mist") {
         activityType = "charity";
-      }
-      if ((weatherMain = "snow")) {
+      } else if (weatherMain == "snow") {
         activityType = "cooking";
-      }
-      if ((weatherMain = "rain")) {
+      } else if (weatherMain == "rain") {
         activityType = "relaxation";
-      }
-      if ((weatherMain = "thunderstorm")) {
+      } else if (weatherMain == "thunderstorm") {
         activityType = "music";
-      }
-      if ((weatherMain = "shower rain")) {
+      } else if (weatherMain == "shower rain") {
         activityType = "busywork";
       }
-      console.log(weatherMain);
-      console.log(activityType);
       // Call Activity API
       // Uses Activity Type and Number of Participants as Parameters
-      let parts = $("#participants-search").val();
       const queryURL =
-        "http://www.boredapi.com/api/activity?type=" +
-        activityType +
-        "&participants=" +
-        parts;
+        "http://www.boredapi.com/api/activity?type=" + activityType;
       $.ajax({
         url: queryURL,
         method: "GET",
       }).then(function (result) {
-        console.log(result);
         // Retreives Random Activity from the API
         let activityFind = result.activity;
         console.log(activityFind);
