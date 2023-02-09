@@ -10,11 +10,7 @@ function callAPI() {
   let userSearch = $("#city-search").val();
   // City to Geo Location
   // Geo Location API
-  let geoQueryURL =
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
-    userSearch +
-    "&limit=1&appid=" +
-    apiKey;
+  let geoQueryURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + userSearch + "&limit=1&appid=" + apiKey;
   $.ajax({
     url: geoQueryURL,
     method: "GET",
@@ -23,6 +19,7 @@ function callAPI() {
     let lon = result[0].lon;
     let latFixed = lat.toFixed(2);
     let lonFixed = lon.toFixed(2);
+    console.log(result);
     // Location Weather API
     let weatherQueryURL =
       "https://api.openweathermap.org/data/2.5/weather?lat=" +
