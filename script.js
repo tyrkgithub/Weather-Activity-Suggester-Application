@@ -29,7 +29,6 @@ function callAPI() {
     let lon = result[0].lon;
     let latFixed = lat.toFixed(2);
     let lonFixed = lon.toFixed(2);
-    console.log(result);
     // Location Weather API
     let weatherQueryURL =
       "https://api.openweathermap.org/data/2.5/weather?lat=" +
@@ -59,7 +58,7 @@ function callAPI() {
           event.preventDefault();
           $("#history").empty();
           // userSearch.value(historyBtn.text);
-
+          $('.gifCardImg').remove();
           callAPI(storage[i]);
         });
         history.append(historyBtn);
@@ -160,40 +159,39 @@ function callAPI() {
         activity1.text(activityFind1);
         // Call giffy API
         let gifRequest = activityFind1;
-        let gifURL =
-          "https://api.giphy.com/v1/gifs/search?api_key=SI1alLDNWOzJX8XiNLAc2pSjZBtKqcUa&q=" +
-          gifRequest +
-          "&limit=1&rating=g&lang=en";
+        if (gifRequest.length > 50) {
+          gifRequest = gifRequest.slice(0, 49);
+        }
+        let gifURL = 'https://api.giphy.com/v1/gifs/search?api_key=SI1alLDNWOzJX8XiNLAc2pSjZBtKqcUa&q=' + gifRequest + '&limit=1&rating=g&lang=en';
         $.ajax({
           url: gifURL,
           method: "GET",
         }).then(function (result) {
-          let gif = $("<img>")
-            .attr("src", result.data[0].images.original.url)
-            .addClass("gifCardImg");
-          $("#activity1Container").prepend(gif);
+          let gif = $('<img>').attr('src', result.data[0].images.original.url).addClass('gifCardImg');
+          $('#activity1Container').prepend(gif);
         });
-        $.ajax({
-          url: queryURL,
-          method: "GET",
-        }).then(function (result) {
-          let activityFind2 = result.activity;
-          let activity2 = $("#activity2");
-          activity2.text(activityFind2);
-          // Call giffy API
-          let gifRequest = activityFind2;
-          let gifURL =
-            "https://api.giphy.com/v1/gifs/search?api_key=SI1alLDNWOzJX8XiNLAc2pSjZBtKqcUa&q=" +
-            gifRequest +
-            "&limit=1&rating=g&lang=en";
+          $.ajax({
+            url: queryURL,
+            method: "GET",
+          }).then(function (result) {
+            let activityFind2 = result.activity;
+            let activity2 = $("#activity2");
+            activity2.text(activityFind2);
+            // Call giffy API
+            let gifRequest = activityFind2;
+            if (gifRequest.length > 50) {
+              gifRequest = gifRequest.slice(0, 49);
+            }
+            let gifURL = 'https://api.giphy.com/v1/gifs/search?api_key=SI1alLDNWOzJX8XiNLAc2pSjZBtKqcUa&q=' + gifRequest + '&limit=1&rating=g&lang=en';
+
           $.ajax({
             url: gifURL,
             method: "GET",
           }).then(function (result) {
-            let gif = $("<img>")
-              .attr("src", result.data[0].images.original.url)
-              .addClass("gifCardImg");
-            $("#activity2Container").prepend(gif);
+
+            let gif = $('<img>').attr('src', result.data[0].images.original.url).addClass('gifCardImg');
+            $('#activity2Container').prepend(gif);
+
           });
         });
         $.ajax({
@@ -205,19 +203,18 @@ function callAPI() {
           activity3.text(activityFind3);
           // Call giffy API
           let gifRequest = activityFind3;
-          let gifURL =
-            "https://api.giphy.com/v1/gifs/search?api_key=SI1alLDNWOzJX8XiNLAc2pSjZBtKqcUa&q=" +
-            gifRequest +
-            "&limit=1&rating=g&lang=en";
-          $.ajax({
-            url: gifURL,
-            method: "GET",
-          }).then(function (result) {
-            let gif = $("<img>")
-              .attr("src", result.data[0].images.original.url)
-              .addClass("gifCardImg");
-            $("#activity3Container").prepend(gif);
-          });
+          if (gifRequest.length > 50) {
+            gifRequest = gifRequest.slice(0, 49);
+          }
+          let gifURL = 'https://api.giphy.com/v1/gifs/search?api_key=SI1alLDNWOzJX8XiNLAc2pSjZBtKqcUa&q=' + gifRequest + '&limit=1&rating=g&lang=en';
+        $.ajax({
+          url: gifURL,
+          method: "GET",
+        }).then(function (result) {
+          let gif = $('<img>').attr('src', result.data[0].images.original.url).addClass('gifCardImg');
+          $('#activity3Container').prepend(gif);
+        });
+
         });
       });
     });
@@ -243,3 +240,16 @@ userButton.on("click", function (event) {
 // );
 // activity1Div.append(activity1, activity1Text);
 // });
+
+
+
+
+
+
+// let a = 'qwertyuiRpasdfgh';
+// console.log(a);
+// if (a.length > 10) {
+//   a = a.slice(0, 9);
+  
+// }
+// console.log(a);
