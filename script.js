@@ -4,6 +4,14 @@ const apiKey = "12786491ac6b5851aca9bc20462fd30e";
 let activityType = "";
 let displayWeather = $("#displayWeather");
 let displayActivities = $("#displayActivities");
+// dates - 
+let today = moment().format('DD/MM/YYYY');
+let tomorrow = moment().add(1, 'days').format('DD/MM/YYYY');
+let day3 = moment().add(2, 'days').format('DD/MM/YYYY');
+let day4 = moment().add(3, 'days').format('DD/MM/YYYY');
+let day5 = moment().add(4, 'days').format('DD/MM/YYYY');
+let day6 = moment().add(5, 'days').format('DD/MM/YYYY');
+
 
 // Call Weather API
 function callAPI() {
@@ -31,7 +39,7 @@ function callAPI() {
     let lonFixed = lon.toFixed(2);
     // Location Weather API
     let weatherQueryURL =
-      "https://api.openweathermap.org/data/2.5/weather?lat=" +
+      "https://api.openweathermap.org/data/2.5/forecast?lat=" +
       latFixed +
       "&lon=" +
       lonFixed +
@@ -69,11 +77,30 @@ function callAPI() {
       url: weatherQueryURL,
       method: "GET",
     }).then(function (result) {
+
+      //   Weather with Date Picker
+      let dateSearch = moment($("#datepicker").val()).format('DD/MM/YYYY')
+      let weatherMain = "";
+      if (dateSearch === today) {
+        weatherMain = result.list[0].weather[0].description;
+      } else if (dateSearch === tomorrow) {
+        weatherMain = result.list[8].weather[0].description;
+      } else if (dateSearch === day3) {
+        weatherMain = result.list[16].weather[0].description;
+      } else if (dateSearch === day4) {
+        weatherMain = result.list[24].weather[0].description;
+      } else if (dateSearch === day5) {
+        weatherMain = result.list[32].weather[0].description;
+      } else if (dateSearch === day6) {
+        weatherMain = result.list[39].weather[0].description;
+      }
+
       console.log(result);
       //   Variable for Current Weather
       let weatherMain = result.weather[0].main;
       console.log(weatherMain);
       let weatherDescription = result.weather[0].description;
+      
       let currentWeather = $("#currentWeather");
       currentWeather.text(
         "The current weather in " + userSearch + " is " + weatherDescription
@@ -228,6 +255,11 @@ userButton.on("click", function (event) {
   $(".weatherImg").remove();
   callAPI();
 });
+// datepicker functionality
+$(function () {
+  $("#datepicker").datepicker({ minDate: 0, maxDate: "+5D" });
+});
+
 
 // console.log(activityFind1);
 // let activity1Div = $("<div>");
