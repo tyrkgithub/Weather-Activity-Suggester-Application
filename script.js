@@ -12,6 +12,7 @@ function callAPI() {
   let searchHistory = [];
   let history = $("#history");
   $("#history").empty();
+
   searchHistory.push(userSearch);
   // City to Geo Location
   // Geo Location API
@@ -69,30 +70,77 @@ function callAPI() {
       url: weatherQueryURL,
       method: "GET",
     }).then(function (result) {
+      console.log(result);
       //   Variable for Current Weather
-      let weatherMain = result.weather[0].description;
+      let weatherMain = result.weather[0].main;
+      console.log(weatherMain);
+      let weatherDescription = result.weather[0].description;
       let currentWeather = $("#currentWeather");
-      currentWeather.text("The current weather is " + weatherMain);
+      currentWeather.text("The current weather is " + weatherDescription);
       //   Current Weather to Activity Key
-      if (weatherMain == "broken clouds") {
-        activityType = "education";
-      } else if (weatherMain == "scattered clouds") {
-        activityType = "diy";
-      } else if (weatherMain == "few clouds") {
-        activityType = "recreational";
-      } else if (weatherMain == "clear sky") {
+      if (weatherMain == "Clear") {
         activityType = "social";
-      } else if (weatherMain == "mist") {
+        let weatherImg = $("<img>")
+          .attr("src", "assets/clear-sky-background.png")
+          .addClass("weatherImg");
+        $("#displayWeather").prepend(weatherImg);
+      } else if (weatherMain == "Clouds") {
+        activityType = "recreational";
+        let weatherImg = $("<img>")
+          .attr("src", "assets/few-clouds-background.png")
+          .addClass("weatherImg");
+        $("#displayWeather").prepend(weatherImg);
+      } else if (
+        weatherMain == "Sand" ||
+        "Mist" ||
+        "Ash" ||
+        "Squall" ||
+        "Tornado"
+      ) {
         activityType = "charity";
-      } else if (weatherMain == "snow") {
+        let weatherImg = $("<img>")
+          .attr("src", "assets/mist-background.png")
+          .addClass("weatherImg");
+        $("#displayWeather").prepend(weatherImg);
+      } else if (weatherMain == "Snow") {
         activityType = "cooking";
-      } else if (weatherMain == "rain") {
+        let weatherImg = $("<img>")
+          .attr("src", "assets/snow-background.png")
+          .addClass("weatherImg");
+        $("#displayWeather").prepend(weatherImg);
+      } else if (weatherMain == "Rain") {
         activityType = "relaxation";
-      } else if (weatherMain == "thunderstorm") {
+        let weatherImg = $("<img>")
+          .attr("src", "assets/rain-background.png")
+          .addClass("weatherImg");
+        $("#displayWeather").prepend(weatherImg);
+      } else if (weatherMain == "Thunderstorm") {
         activityType = "music";
-      } else if (weatherMain == "shower rain") {
+        let weatherImg = $("<img>")
+          .attr("src", "assets/thunderstorm-background.png")
+          .addClass("weatherImg");
+        $("#displayWeather").prepend(weatherImg);
+      } else if (weatherMain == "Drizzle") {
         activityType = "busywork";
+        let weatherImg = $("<img>")
+          .attr("src", "assets/shower-rain-background.png")
+          .addClass("weatherImg");
+        $("#displayWeather").prepend(weatherImg);
+      } else if (weatherMain == "Smoke" || "Haze") {
+        activityType = "education";
+        let weatherImg = $("<img>")
+          .attr("src", "assets/broken-clouds-background.png")
+          .addClass("weatherImg");
+        $("#displayWeather").prepend(weatherImg);
+      } else if (weatherMain == "Dust" || "Dust" || "Fog") {
+        activityType = "diy";
+        let weatherImg = $("<img>")
+          .attr("src", "assets/scattered-clouds-background.png")
+          .addClass("weatherImg");
+        $("#displayWeather").prepend(weatherImg);
       }
+      console.log(activityType);
+
       // Call Activity API
       // Uses Activity Type and Number of Participants as Parameters
       const queryURL =
@@ -110,32 +158,40 @@ function callAPI() {
         activity1.text(activityFind1);
         // Call giffy API
         let gifRequest = activityFind1;
-        let gifURL = 'https://api.giphy.com/v1/gifs/search?api_key=SI1alLDNWOzJX8XiNLAc2pSjZBtKqcUa&q=' + gifRequest + '&limit=1&rating=g&lang=en';
+        let gifURL =
+          "https://api.giphy.com/v1/gifs/search?api_key=SI1alLDNWOzJX8XiNLAc2pSjZBtKqcUa&q=" +
+          gifRequest +
+          "&limit=1&rating=g&lang=en";
         $.ajax({
           url: gifURL,
           method: "GET",
         }).then(function (result) {
-          console.log(result);
-          let gif = $('<img>').attr('src', result.data[0].images.original.url).addClass('gifCardImg');
-          $('#activity1Container').prepend(gif);
+          let gif = $("<img>")
+            .attr("src", result.data[0].images.original.url)
+            .addClass("gifCardImg");
+          $("#activity1Container").prepend(gif);
         });
-          $.ajax({
-            url: queryURL,
-            method: "GET",
-          }).then(function (result) {
-            let activityFind2 = result.activity;
-            let activity2 = $("#activity2");
-            activity2.text(activityFind2);
-            // Call giffy API
-            let gifRequest = activityFind2;
-            let gifURL = 'https://api.giphy.com/v1/gifs/search?api_key=SI1alLDNWOzJX8XiNLAc2pSjZBtKqcUa&q=' + gifRequest + '&limit=1&rating=g&lang=en';
+        $.ajax({
+          url: queryURL,
+          method: "GET",
+        }).then(function (result) {
+          let activityFind2 = result.activity;
+          let activity2 = $("#activity2");
+          activity2.text(activityFind2);
+          // Call giffy API
+          let gifRequest = activityFind2;
+          let gifURL =
+            "https://api.giphy.com/v1/gifs/search?api_key=SI1alLDNWOzJX8XiNLAc2pSjZBtKqcUa&q=" +
+            gifRequest +
+            "&limit=1&rating=g&lang=en";
           $.ajax({
             url: gifURL,
             method: "GET",
           }).then(function (result) {
-            console.log(result);
-            let gif = $('<img>').attr('src', result.data[0].images.original.url).addClass('gifCardImg');
-            $('#activity2Container').prepend(gif);
+            let gif = $("<img>")
+              .attr("src", result.data[0].images.original.url)
+              .addClass("gifCardImg");
+            $("#activity2Container").prepend(gif);
           });
         });
         $.ajax({
@@ -147,15 +203,19 @@ function callAPI() {
           activity3.text(activityFind3);
           // Call giffy API
           let gifRequest = activityFind3;
-          let gifURL = 'https://api.giphy.com/v1/gifs/search?api_key=SI1alLDNWOzJX8XiNLAc2pSjZBtKqcUa&q=' + gifRequest + '&limit=1&rating=g&lang=en';
-        $.ajax({
-          url: gifURL,
-          method: "GET",
-        }).then(function (result) {
-          console.log(result);
-          let gif = $('<img>').attr('src', result.data[0].images.original.url).addClass('gifCardImg');
-          $('#activity3Container').prepend(gif);
-        });
+          let gifURL =
+            "https://api.giphy.com/v1/gifs/search?api_key=SI1alLDNWOzJX8XiNLAc2pSjZBtKqcUa&q=" +
+            gifRequest +
+            "&limit=1&rating=g&lang=en";
+          $.ajax({
+            url: gifURL,
+            method: "GET",
+          }).then(function (result) {
+            let gif = $("<img>")
+              .attr("src", result.data[0].images.original.url)
+              .addClass("gifCardImg");
+            $("#activity3Container").prepend(gif);
+          });
         });
       });
     });
@@ -165,7 +225,8 @@ function callAPI() {
 //On button click
 userButton.on("click", function (event) {
   event.preventDefault();
-  $('.gifCardImg').remove();
+  $(".gifCardImg").remove();
+  $(".weatherImg").remove();
   callAPI();
 });
 
