@@ -12,6 +12,10 @@ let day4 = moment().add(3, 'days').format('DD/MM/YYYY');
 let day5 = moment().add(4, 'days').format('DD/MM/YYYY');
 let day6 = moment().add(5, 'days').format('DD/MM/YYYY');
 
+// datepicker functionality
+$(function () {
+  $("#datepicker").datepicker({ minDate: 0, maxDate: "+5D" });
+});
 
 // Call Weather API
 function callAPI() {
@@ -79,31 +83,36 @@ function callAPI() {
     }).then(function (result) {
 
       //   Weather with Date Picker
-      let dateSearch = moment($("#datepicker").val()).format('DD/MM/YYYY')
+      let dateSearch = moment($("#datepicker").val()).format('DD/MM/YYYY');
       let weatherMain = "";
+      let weatherDescription = "";
       if (dateSearch === today) {
-        weatherMain = result.list[0].weather[0].description;
+        weatherDescription = result.list[0].weather[0].description;
+        weatherMain = result.list[0].weather[0].main;
       } else if (dateSearch === tomorrow) {
-        weatherMain = result.list[8].weather[0].description;
+        weatherDescription = result.list[8].weather[0].description;
+        weatherMain = result.list[8].weather[0].main;
       } else if (dateSearch === day3) {
-        weatherMain = result.list[16].weather[0].description;
+        weatherDescription = result.list[16].weather[0].description;
+        weatherMain = result.list[16].weather[0].main;
       } else if (dateSearch === day4) {
-        weatherMain = result.list[24].weather[0].description;
+        weatherDescription = result.list[24].weather[0].description;
+        weatherMain = result.list[24].weather[0].main;
       } else if (dateSearch === day5) {
-        weatherMain = result.list[32].weather[0].description;
+        weatherDescription = result.list[32].weather[0].description;
+        weatherMain = result.list[32].weather[0].main;
       } else if (dateSearch === day6) {
-        weatherMain = result.list[39].weather[0].description;
+        weatherDescription = result.list[39].weather[0].description;
+        weatherMain = result.list[39].weather[0].main;
       }
 
       console.log(result);
       //   Variable for Current Weather
-      let weatherMain = result.weather[0].main;
       console.log(weatherMain);
-      let weatherDescription = result.weather[0].description;
-      
+      console.log(weatherDescription);
       let currentWeather = $("#currentWeather");
       currentWeather.text(
-        "The current weather in " + userSearch + " is " + weatherDescription
+        "The weather for " + dateSearch + " " + userSearch + " is " + weatherDescription
       );
       //   Current Weather to Activity Key
       if (weatherMain == "Clear") {
@@ -255,10 +264,7 @@ userButton.on("click", function (event) {
   $(".weatherImg").remove();
   callAPI();
 });
-// datepicker functionality
-$(function () {
-  $("#datepicker").datepicker({ minDate: 0, maxDate: "+5D" });
-});
+
 
 
 // console.log(activityFind1);
