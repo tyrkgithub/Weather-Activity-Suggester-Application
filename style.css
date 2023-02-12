@@ -1,1 +1,77 @@
+:root {
+  --broken1: #7598fa;
+  --broken2: #77aee9;
+  --few1: #45eaf3;
+  --few2: #3ec3eb;
+  --clear1: #e7f700;
+  --clear2: #c4f60f;
+  --scattered2: #c0c0fa;
+  --mist1: #d8f3ff;
+  --mist2: #bac9e4;
+  --snow1: #c4c4fb;
+  --snow2: #bae5fe;
+  --rain1: #6ca5f1;
+  --rain2: #3772ea;
+  --thunderstorm1: #75758d;
+  --thundetstorm2: #454564;
+  --main1: #2c048b;
+  --main2: #9335f1;
+  --main3: #4e0474;
+  --text1: #e8e8f8;
+  --text2: #15151e;
+}
 
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-color: var(--main3) !important;
+  display: block;
+  margin: 8px;
+}
+
+.jumbotron {
+  background-color: var(--main2) !important;
+  color: var(--text1);
+  margin-bottom: 1rem !important;
+  position: relative;
+  background-image: url(../images/flowerpic.jpg);
+}
+
+.row {
+}
+
+.container-fluid {
+  background-color: var(--main3);
+}
+
+.input {
+}
+
+.button {
+}
+
+.card {
+}
+
+.mb-3 {
+  margin: 5px;
+  cursor: pointer;
+  display: flex;
+}
+
+.card-header {
+  background-color: var(--main1) !important;
+}
+
+.card-body {
+  background-color: var(--main2) !important;
+}
+
+.card-text {
+}
+
+.card-footer {
+  background-color: var(--main1) !important;
+}
+
+.container {
+}
