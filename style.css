@@ -33,7 +33,6 @@ body {
   color: var(--text1);
   margin-bottom: 1rem !important;
   position: relative;
-  background-image: url(../images/flowerpic.jpg);
 }
 
 .row {
