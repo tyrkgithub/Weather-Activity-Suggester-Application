@@ -8,6 +8,11 @@ let displayActivities = $("#displayActivities");
 // Call Weather API
 function callAPI() {
   let userSearch = $("#city-search").val();
+
+  let searchHistory = [];
+  let history = $("#history");
+  // $("#history").empty();
+  searchHistory.push(userSearch);
   // City to Geo Location
   // Geo Location API
   let geoQueryURL =
@@ -33,32 +38,32 @@ function callAPI() {
       "&appid=" +
       apiKey;
 
-    // $.ajax({
-    //   url: weatherQueryURL,
-    //   method: "GET",
-    // }).then(function (result) {
-    //   let historyLocation = "historyLocation";
-    //   let currentLocation = result.name;
+    $.ajax({
+      url: weatherQueryURL,
+      method: "GET",
+    }).then(function (result) {
+      let historyLocation = "historyLocation";
+      let currentLocation = result.name;
 
-    //   let storage = JSON.parse(localStorage.getItem("historyLocation")) || [];
+      let storage = JSON.parse(localStorage.getItem("historyLocation")) || [];
 
-    //   if (!storage.includes(currentLocation)) {
-    //     storage.push(currentLocation);
-    //   }
-    //   localStorage.setItem("historyLocation", JSON.stringify(storage));
-    //   for (let i = 0; i < storage.length; i++) {
-    //     let historyBtn = $("<button>").text(storage[i]);
+      if (!storage.includes(currentLocation)) {
+        storage.push(currentLocation);
+      }
+      localStorage.setItem("historyLocation", JSON.stringify(storage));
+      for (let i = 0; i < storage.length; i++) {
+        let historyBtn = $("<button>").text(storage[i]);
 
-    //     historyBtn.on("click", function (event) {
-    //       event.preventDefault();
-    //       $("#history").empty();
-    //       // userSearch.value(historyBtn.text);
+        historyBtn.on("click", function (event) {
+          event.preventDefault();
+          $("#history").empty();
+          // userSearch.value(historyBtn.text);
 
-    //       searchWeather(storage[i]);
-    //       console.log(storage[i]);
-    //     });
-    //     history.append(historyBtn);
-    //   }
+          callAPI(storage[i]);
+        });
+        history.append(historyBtn);
+      }
+    });
 
     $.ajax({
       url: weatherQueryURL,
