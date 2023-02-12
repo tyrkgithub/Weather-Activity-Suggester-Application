@@ -41,25 +41,32 @@
             <button class="button" id="button">Search Activities</button>
           </div>
         </div>
-        <div class="card-footer" id="history">
+        <div class="card-footer">
+          <h3 class="card-footer-head">Search History</h3>
+        <div id="history">
+        </div>
         </div>
       </div>
     </aside>
     <!-- Column for returns -->
-    <div>
+    <div class="cardDiv col-sm-12 col-md-12 col-lg-9" id="cardDiv">
       <!-- weather of date return -->
+      
       <div class="card mb-3" id="displayWeather">
         <div class="card-body">
           <h3>Weather Details</h3>
           <p class="card-text" id="currentWeather"></p>
         </div>
+      </div>
 
         <!-- Activities Title -->
-      </div>
+     
       <section id="displayActivities">
-        <div id="activityHeading">
+        <div class="card mb-3" id="activityHeading">
+          <div class="card-body">
           <h3>Activity Suggestions</h3>
-          <p id="activityText"></p>
+          <p class="card-text" id="activityText"></p>
+          </div>
         </div>
         <!-- activity number 1 card -->
         <div class="card mb-3" id="activity1Container">
@@ -108,7 +115,7 @@
 <!-- footer -->
 <footer class="jumbotron jumbotron-fluid custom-jumbotron" id="footer">
   <div class="container text-center">
-    <h5>Not happy with these choices shuffle and try again</h5>
+    <h5>Not happy with these choices? Shuffle and try again!</h5>
   </div>
 </footer>
 

@@ -14,9 +14,10 @@
   --rain2: #3772ea;
   --thunderstorm1: #75758d;
   --thundetstorm2: #454564;
-  --main1: #2c048b;
-  --main2: #9335f1;
-  --main3: #4e0474;
+  --main1: rgb(106, 106, 249);
+  --main2: rgb(194, 141, 247);
+  --main3: rgb(27, 48, 209);
+  --main4: beige;
   --text1: #e8e8f8;
   --text2: #15151e;
 }
@@ -29,7 +30,7 @@ body {
 }
 
 .jumbotron {
-  background-color: var(--main2) !important;
+  background-color: var(--main1) !important;
   color: var(--text1);
   margin-bottom: 1rem !important;
   position: relative;
@@ -67,6 +68,7 @@ body {
   background-color: var(--main1) !important;
 }
 
+
 .container {}
 
 .ui-datepicker {
@@ -74,3 +76,10 @@ body {
   border: 1px solid #555;
   color: #EEE;
 }
+
+.container {
+}
+
+.weatherImg {
+}
+
