@@ -76,7 +76,9 @@ function callAPI() {
       console.log(weatherMain);
       let weatherDescription = result.weather[0].description;
       let currentWeather = $("#currentWeather");
-      currentWeather.text("The current weather is " + weatherDescription);
+      currentWeather.text(
+        "The current weather in " + userSearch + " is " + weatherDescription
+      );
       //   Current Weather to Activity Key
       if (weatherMain == "Clear") {
         activityType = "social";
