@@ -35,21 +35,17 @@ body {
   position: relative;
 }
 
-.row {
-}
+.row {}
 
 .container-fluid {
   background-color: var(--main3);
 }
 
-.input {
-}
+.input {}
 
-.button {
-}
+.button {}
 
-.card {
-}
+.card {}
 
 .mb-3 {
   margin: 5px;
@@ -65,12 +61,16 @@ body {
   background-color: var(--main2) !important;
 }
 
-.card-text {
-}
+.card-text {}
 
 .card-footer {
   background-color: var(--main1) !important;
 }
 
-.container {
+.container {}
+
+.ui-datepicker {
+  background: #333;
+  border: 1px solid #555;
+  color: #EEE;
 }

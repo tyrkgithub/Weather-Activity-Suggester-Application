@@ -33,9 +33,9 @@
         </h3>
 
         <div class="card-body">
-          <div class="card-text">
+          <div class="card-text mx-auto">
             <h4 for="start">Date</h4>
-            <input type="date" id="start" value="today();" min="today();" max="today()+5;">
+            <input type="text" id="datepicker">
             <h4 for="search">City</h4>
             <input class="input" type="text" id="city-search" placeholder="London" />
             <button class="button" id="button">Search Activities</button>
@@ -50,7 +50,7 @@
       <!-- weather of date return -->
       <div class="card mb-3" id="displayWeather">
         <div class="card-body">
-          <h3>Current Weather Details</h3>
+          <h3>Weather Details</h3>
           <p class="card-text" id="currentWeather"></p>
         </div>
 
@@ -118,6 +118,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
 <!-- jQuery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script src="script.js"></script>
 
 </html>
