@@ -10,7 +10,11 @@ function callAPI() {
   let userSearch = $("#city-search").val();
   // City to Geo Location
   // Geo Location API
-  let geoQueryURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + userSearch + "&limit=1&appid=" + apiKey;
+  let geoQueryURL =
+    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    userSearch +
+    "&limit=1&appid=" +
+    apiKey;
   $.ajax({
     url: geoQueryURL,
     method: "GET",
@@ -28,6 +32,34 @@ function callAPI() {
       lonFixed +
       "&appid=" +
       apiKey;
+
+    // $.ajax({
+    //   url: weatherQueryURL,
+    //   method: "GET",
+    // }).then(function (result) {
+    //   let historyLocation = "historyLocation";
+    //   let currentLocation = result.name;
+
+    //   let storage = JSON.parse(localStorage.getItem("historyLocation")) || [];
+
+    //   if (!storage.includes(currentLocation)) {
+    //     storage.push(currentLocation);
+    //   }
+    //   localStorage.setItem("historyLocation", JSON.stringify(storage));
+    //   for (let i = 0; i < storage.length; i++) {
+    //     let historyBtn = $("<button>").text(storage[i]);
+
+    //     historyBtn.on("click", function (event) {
+    //       event.preventDefault();
+    //       $("#history").empty();
+    //       // userSearch.value(historyBtn.text);
+
+    //       searchWeather(storage[i]);
+    //       console.log(storage[i]);
+    //     });
+    //     history.append(historyBtn);
+    //   }
+
     $.ajax({
       url: weatherQueryURL,
       method: "GET",
