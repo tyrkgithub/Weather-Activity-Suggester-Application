@@ -11,7 +11,7 @@ function callAPI() {
 
   let searchHistory = [];
   let history = $("#history");
-  // $("#history").empty();
+  $("#history").empty();
   searchHistory.push(userSearch);
   // City to Geo Location
   // Geo Location API
