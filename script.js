@@ -4,13 +4,13 @@ const apiKey = "12786491ac6b5851aca9bc20462fd30e";
 let activityType = "";
 let displayWeather = $("#displayWeather");
 let displayActivities = $("#displayActivities");
-// dates - 
-let today = moment().format('DD/MM/YYYY');
-let tomorrow = moment().add(1, 'days').format('DD/MM/YYYY');
-let day3 = moment().add(2, 'days').format('DD/MM/YYYY');
-let day4 = moment().add(3, 'days').format('DD/MM/YYYY');
-let day5 = moment().add(4, 'days').format('DD/MM/YYYY');
-let day6 = moment().add(5, 'days').format('DD/MM/YYYY');
+// dates -
+let today = moment().format("DD/MM/YYYY");
+let tomorrow = moment().add(1, "days").format("DD/MM/YYYY");
+let day3 = moment().add(2, "days").format("DD/MM/YYYY");
+let day4 = moment().add(3, "days").format("DD/MM/YYYY");
+let day5 = moment().add(4, "days").format("DD/MM/YYYY");
+let day6 = moment().add(5, "days").format("DD/MM/YYYY");
 
 // datepicker functionality
 $(function () {
@@ -18,9 +18,8 @@ $(function () {
 });
 
 // Call Weather API
-function callAPI() {
-  let userSearch = $("#city-search").val();
-
+function callAPI(city) {
+  let userSearch = city || $("#city-search").val();
   let searchHistory = [];
   let history = $("#history");
   $("#history").empty();
@@ -55,7 +54,7 @@ function callAPI() {
       method: "GET",
     }).then(function (result) {
       let historyLocation = "historyLocation";
-      let currentLocation = result.name;
+      let currentLocation = result.city.name;
 
       let storage = JSON.parse(localStorage.getItem("historyLocation")) || [];
 
@@ -70,7 +69,7 @@ function callAPI() {
           event.preventDefault();
           $("#history").empty();
           // userSearch.value(historyBtn.text);
-          $('.gifCardImg').remove();
+          $(".gifCardImg").remove();
           callAPI(storage[i]);
         });
         history.append(historyBtn);
@@ -81,12 +80,16 @@ function callAPI() {
       url: weatherQueryURL,
       method: "GET",
     }).then(function (result) {
-
+      console.log(result);
       //   Weather with Date Picker
-      let dateSearch = moment($("#datepicker").val()).format('DD/MM/YYYY');
+      let dateSearch = moment($("#datepicker").val()).format("DD/MM/YYYY");
       let weatherMain = "";
       let weatherDescription = "";
-      if (dateSearch === today) {
+      if (!$("#datepicker").val()) {
+        dateSearch = today;
+        weatherDescription = result.list[0].weather[0].description;
+        weatherMain = result.list[0].weather[0].main;
+      } else if (dateSearch === today) {
         weatherDescription = result.list[0].weather[0].description;
         weatherMain = result.list[0].weather[0].main;
       } else if (dateSearch === tomorrow) {
@@ -105,14 +108,18 @@ function callAPI() {
         weatherDescription = result.list[39].weather[0].description;
         weatherMain = result.list[39].weather[0].main;
       }
+      console.log(weatherDescription);
 
-      console.log(result);
       //   Variable for Current Weather
       console.log(weatherMain);
-      console.log(weatherDescription);
       let currentWeather = $("#currentWeather");
       currentWeather.text(
-        "The weather for " + dateSearch + " " + userSearch + " is " + weatherDescription
+        "The weather for " +
+          dateSearch +
+          " " +
+          userSearch +
+          " is " +
+          weatherDescription
       );
       //   Current Weather to Activity Key
       if (weatherMain == "Clear") {
@@ -198,36 +205,44 @@ function callAPI() {
         if (gifRequest.length > 50) {
           gifRequest = gifRequest.slice(0, 49);
         }
-        let gifURL = 'https://api.giphy.com/v1/gifs/search?api_key=SI1alLDNWOzJX8XiNLAc2pSjZBtKqcUa&q=' + gifRequest + '&limit=1&rating=g&lang=en';
+        let gifURL =
+          "https://api.giphy.com/v1/gifs/search?api_key=SI1alLDNWOzJX8XiNLAc2pSjZBtKqcUa&q=" +
+          gifRequest +
+          "&limit=1&rating=g&lang=en";
         $.ajax({
           url: gifURL,
           method: "GET",
         }).then(function (result) {
-          let gif = $('<img>').attr('src', result.data[0].images.original.url).addClass('gifCardImg');
-          $('#activity1Container').prepend(gif);
+          let gif = $("<img>")
+            .attr("src", result.data[0].images.original.url)
+            .addClass("gifCardImg");
+          $("#activity1Container").prepend(gif);
         });
-          $.ajax({
-            url: queryURL,
-            method: "GET",
-          }).then(function (result) {
-            let activityFind2 = result.activity;
-            let activity2 = $("#activity2");
-            activity2.text(activityFind2);
-            // Call giffy API
-            let gifRequest = activityFind2;
-            if (gifRequest.length > 50) {
-              gifRequest = gifRequest.slice(0, 49);
-            }
-            let gifURL = 'https://api.giphy.com/v1/gifs/search?api_key=SI1alLDNWOzJX8XiNLAc2pSjZBtKqcUa&q=' + gifRequest + '&limit=1&rating=g&lang=en';
+        $.ajax({
+          url: queryURL,
+          method: "GET",
+        }).then(function (result) {
+          let activityFind2 = result.activity;
+          let activity2 = $("#activity2");
+          activity2.text(activityFind2);
+          // Call giffy API
+          let gifRequest = activityFind2;
+          if (gifRequest.length > 50) {
+            gifRequest = gifRequest.slice(0, 49);
+          }
+          let gifURL =
+            "https://api.giphy.com/v1/gifs/search?api_key=SI1alLDNWOzJX8XiNLAc2pSjZBtKqcUa&q=" +
+            gifRequest +
+            "&limit=1&rating=g&lang=en";
 
           $.ajax({
             url: gifURL,
             method: "GET",
           }).then(function (result) {
-
-            let gif = $('<img>').attr('src', result.data[0].images.original.url).addClass('gifCardImg');
-            $('#activity2Container').prepend(gif);
-
+            let gif = $("<img>")
+              .attr("src", result.data[0].images.original.url)
+              .addClass("gifCardImg");
+            $("#activity2Container").prepend(gif);
           });
         });
         $.ajax({
@@ -242,15 +257,19 @@ function callAPI() {
           if (gifRequest.length > 50) {
             gifRequest = gifRequest.slice(0, 49);
           }
-          let gifURL = 'https://api.giphy.com/v1/gifs/search?api_key=SI1alLDNWOzJX8XiNLAc2pSjZBtKqcUa&q=' + gifRequest + '&limit=1&rating=g&lang=en';
-        $.ajax({
-          url: gifURL,
-          method: "GET",
-        }).then(function (result) {
-          let gif = $('<img>').attr('src', result.data[0].images.original.url).addClass('gifCardImg');
-          $('#activity3Container').prepend(gif);
-        });
-
+          let gifURL =
+            "https://api.giphy.com/v1/gifs/search?api_key=SI1alLDNWOzJX8XiNLAc2pSjZBtKqcUa&q=" +
+            gifRequest +
+            "&limit=1&rating=g&lang=en";
+          $.ajax({
+            url: gifURL,
+            method: "GET",
+          }).then(function (result) {
+            let gif = $("<img>")
+              .attr("src", result.data[0].images.original.url)
+              .addClass("gifCardImg");
+            $("#activity3Container").prepend(gif);
+          });
         });
       });
     });
@@ -265,8 +284,6 @@ userButton.on("click", function (event) {
   callAPI();
 });
 
-
-
 // console.log(activityFind1);
 // let activity1Div = $("<div>");
 // let activity1 = $("<h5>");
@@ -279,15 +296,10 @@ userButton.on("click", function (event) {
 // activity1Div.append(activity1, activity1Text);
 // });
 
-
-
-
-
-
 // let a = 'qwertyuiRpasdfgh';
 // console.log(a);
 // if (a.length > 10) {
 //   a = a.slice(0, 9);
-  
+
 // }
 // console.log(a);
