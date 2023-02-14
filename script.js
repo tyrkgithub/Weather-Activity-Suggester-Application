@@ -12,6 +12,8 @@ let day4 = moment().add(3, "days").format("DD/MM/YYYY");
 let day5 = moment().add(4, "days").format("DD/MM/YYYY");
 let day6 = moment().add(5, "days").format("DD/MM/YYYY");
 
+// On Load
+
 // datepicker functionality
 $(function () {
   $("#datepicker").datepicker({ minDate: 0, maxDate: "+5D" });
@@ -68,11 +70,10 @@ function callAPI(city) {
         historyBtn.on("click", function (event) {
           event.preventDefault();
           $("#history").empty();
-          // userSearch.value(historyBtn.text);
           $(".gifCardImg").remove();
           $(".weatherImg").remove();
           callAPI(storage[i]);
-          initPage()
+          // initPage()
         });
         history.append(historyBtn);
       }
@@ -117,11 +118,11 @@ function callAPI(city) {
       let currentWeather = $("#currentWeather");
       currentWeather.text(
         "The weather for " +
-        dateSearch +
-        " " +
-        userSearch +
-        " is " +
-        weatherDescription
+          dateSearch +
+          " " +
+          userSearch +
+          " is " +
+          weatherDescription
       );
       //   Current Weather to Activity Key
       if (weatherMain == "Clear") {
@@ -278,51 +279,37 @@ function callAPI(city) {
   });
 }
 
-// modal close 
+function initPage() {
+  let storage = JSON.parse(localStorage.getItem("historyLocation"));
+  if (storage !== null) {
+    for (let i = 0; i < storage.length; i++) {
+      let historyBtn = $("<button>").text(storage[i]).addClass("historyBtn");
+      $("#history").append(historyBtn);
+
+      historyBtn.on("click", function (event) {
+        event.preventDefault();
+        callAPI(storage[i]);
+      });
+    }
+  } else {
+    return;
+  }
+}
+
+window.onload = initPage();
+// modal close
 $(".close").on("click", function () {
-  $("#incorrect-entry-modal").hide()
-})
+  $("#incorrect-entry-modal").hide();
+});
 //On button click
 userButton.on("click", function (event) {
   // Show modal IF there is no entry in cells
   if ($("#city-search").val().trim() == "") {
-    $('#incorrect-entry-modal').show();
-    return
+    $("#incorrect-entry-modal").show();
+    return;
   }
   event.preventDefault();
   $(".gifCardImg").remove();
   $(".weatherImg").remove();
   callAPI();
 });
-
-initPage()
-function initPage() {
-  let storage = JSON.parse(localStorage.getItem("historyLocation"));
-  if (storage !== null) {
-    for (let i = 0; i < storage.length; i++) {
-      let historyBtn = $("<button>").text(storage[i]).addClass('historyBtn');
-      $("#history").append(historyBtn);
-    };
-  } else {
-    return;
-  };
-};
-// console.log(activityFind1);
-// let activity1Div = $("<div>");
-// let activity1 = $("<h5>");
-// let activity1Text = $("<p>");
-// activity1.text("Activity 1");
-// console.log(activity1);
-// activity1Text.text(
-//   "Your first suggested activity is " + activityFind1 + "!"
-// );
-// activity1Div.append(activity1, activity1Text);
-// });
-
-// let a = 'qwertyuiRpasdfgh';
-// console.log(a);
-// if (a.length > 10) {
-//   a = a.slice(0, 9);
-
-// }
-// console.log(a);
