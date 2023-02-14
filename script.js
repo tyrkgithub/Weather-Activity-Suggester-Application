@@ -115,11 +115,11 @@ function callAPI(city) {
       let currentWeather = $("#currentWeather");
       currentWeather.text(
         "The weather for " +
-          dateSearch +
-          " " +
-          userSearch +
-          " is " +
-          weatherDescription
+        dateSearch +
+        " " +
+        userSearch +
+        " is " +
+        weatherDescription
       );
       //   Current Weather to Activity Key
       if (weatherMain == "Clear") {
@@ -276,8 +276,17 @@ function callAPI(city) {
   });
 }
 
+// modal close 
+$(".close").on("click", function () {
+  $("#incorrect-entry-modal").hide()
+})
 //On button click
 userButton.on("click", function (event) {
+  // Show modal IF there is no entry in cells
+  if ($("#city-search").val().trim() == "") {
+    $('#incorrect-entry-modal').show();
+    return
+  }
   event.preventDefault();
   $(".gifCardImg").remove();
   $(".weatherImg").remove();
