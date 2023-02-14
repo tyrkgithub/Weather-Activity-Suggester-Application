@@ -70,6 +70,7 @@ function callAPI(city) {
           $("#history").empty();
           // userSearch.value(historyBtn.text);
           $(".gifCardImg").remove();
+          $(".weatherImg").remove();
           callAPI(storage[i]);
           initPage()
         });
