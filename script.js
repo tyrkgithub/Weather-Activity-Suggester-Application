@@ -70,7 +70,9 @@ function callAPI(city) {
           $("#history").empty();
           // userSearch.value(historyBtn.text);
           $(".gifCardImg").remove();
+          $(".weatherImg").remove();
           callAPI(storage[i]);
+          initPage()
         });
         history.append(historyBtn);
       }
@@ -293,6 +295,18 @@ userButton.on("click", function (event) {
   callAPI();
 });
 
+initPage()
+function initPage() {
+  let storage = JSON.parse(localStorage.getItem("historyLocation"));
+  if (storage !== null) {
+    for (let i = 0; i < storage.length; i++) {
+      let historyBtn = $("<button>").text(storage[i]).addClass('historyBtn');
+      $("#history").append(historyBtn);
+    };
+  } else {
+    return;
+  };
+};
 // console.log(activityFind1);
 // let activity1Div = $("<div>");
 // let activity1 = $("<h5>");
