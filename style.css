@@ -14,9 +14,9 @@
   --rain2: #3772ea;
   --thunderstorm1: #75758d;
   --thundetstorm2: #454564;
-  --main1: rgb(106, 106, 249);
-  --main2: rgb(194, 141, 247);
-  --main3: rgb(27, 48, 209);
+  --main1: #6A6AF9;
+  --main2: #C28DF7;
+  --main3: #1B30D1;
   --main4: beige;
   --text1: #e8e8f8;
   --text2: #15151e;
@@ -27,6 +27,18 @@ body {
   background-color: var(--main3) !important;
   display: block;
   margin: 8px;
+}
+
+h1 {
+  font-family: 'Raleway', sans-serif;
+  color: var(--main3);
+}
+
+#logo {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--main3);
 }
 
 .jumbotron {
@@ -42,9 +54,46 @@ body {
   background-color: var(--main3);
 }
 
-.input {}
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
 
-.button {}
+.card-text {
+  text-align: center !important;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14pt;
+
+}
+
+
+
+.button {
+  background-image: linear-gradient(to right, #6A6AF9 0%, #C28DF7 51%, #1B30D1 100%);
+
+  padding: 15px 15px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+
+  border-radius: 10px;
+  margin: 0 auto;
+  display: block;
+  margin-top: 10px;
+}
+
+.button:hover {
+  background-position: right center;
+  /* change the direction of the change here */
+  color: #fff;
+  box-shadow: 0 0 20px #eee;
+  text-decoration: none;
+}
 
 .card {}
 
@@ -62,7 +111,6 @@ body {
   background-color: var(--main2) !important;
 }
 
-.card-text {}
 
 .card-footer {
   background-color: var(--main1) !important;
@@ -72,14 +120,36 @@ body {
 .container {}
 
 .ui-datepicker {
-  background: #333;
-  border: 1px solid #555;
-  color: #EEE;
+  background: var(--main4);
+  border-radius: 10px;
+  text-align: center;
 }
 
-.container {
+.ui-datepicker-header {
+  background: var(--main1);
+  color: #e0e0e0;
+  font-weight: bold;
+  line-height: 30px;
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  border-color: var(--main4);
 }
 
-.weatherImg {
+.ui-datepicker-title {
+  text-align: center;
 }
 
+
+.ui-datepicker th {
+  text-transform: uppercase;
+  background: var(--main4);
+  font-size: 10pt;
+  padding: 10px 11px;
+  color: #666666;
+  text-shadow: 1px 0px 0px #fff;
+  filter: dropshadow(color=#fff, offx=1, offy=0);
+}
+
+.container {}
+
+.weatherImg {}
