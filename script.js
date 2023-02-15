@@ -16,7 +16,7 @@ let day6 = moment().add(5, "days").format("DD/MM/YYYY");
 
 // datepicker functionality
 $(function () {
-  $("#datepicker").datepicker({ minDate: 0, maxDate: "+5D" });
+  $("#datepicker").datepicker({ minDate: 0, maxDate: "+5D", hideIfNoPrevNext: true, duration: '' });
 });
 
 // Call Weather API
@@ -65,7 +65,7 @@ function callAPI(city) {
       }
       localStorage.setItem("historyLocation", JSON.stringify(storage));
       for (let i = 0; i < storage.length; i++) {
-        let historyBtn = $("<button>").text(storage[i]);
+        let historyBtn = $("<button>").text(storage[i]).addClass("historyBtn button");
 
         historyBtn.on("click", function (event) {
           event.preventDefault();
@@ -118,11 +118,11 @@ function callAPI(city) {
       let currentWeather = $("#currentWeather");
       currentWeather.text(
         "The weather for " +
-          dateSearch +
-          " " +
-          userSearch +
-          " is " +
-          weatherDescription
+        dateSearch +
+        " " +
+        userSearch +
+        " is " +
+        weatherDescription
       );
       //   Current Weather to Activity Key
       if (weatherMain == "Clear") {
@@ -283,7 +283,7 @@ function initPage() {
   let storage = JSON.parse(localStorage.getItem("historyLocation"));
   if (storage !== null) {
     for (let i = 0; i < storage.length; i++) {
-      let historyBtn = $("<button>").text(storage[i]).addClass("historyBtn");
+      let historyBtn = $("<button>").text(storage[i]).addClass("historyBtn button");
       $("#history").append(historyBtn);
 
       historyBtn.on("click", function (event) {
