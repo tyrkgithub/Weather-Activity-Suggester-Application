@@ -1,19 +1,4 @@
 :root {
-  --broken1: #7598fa;
-  --broken2: #77aee9;
-  --few1: #45eaf3;
-  --few2: #3ec3eb;
-  --clear1: #e7f700;
-  --clear2: #c4f60f;
-  --scattered2: #c0c0fa;
-  --mist1: #d8f3ff;
-  --mist2: #bac9e4;
-  --snow1: #c4c4fb;
-  --snow2: #bae5fe;
-  --rain1: #6ca5f1;
-  --rain2: #3772ea;
-  --thunderstorm1: #75758d;
-  --thundetstorm2: #454564;
   --main1: #6A6AF9;
   --main2: #C28DF7;
   --main3: #1B30D1;
@@ -48,7 +33,6 @@ h1 {
   position: relative;
 }
 
-.row {}
 
 .container-fluid {
   background-color: var(--main3);
@@ -68,8 +52,6 @@ input[type=text] {
   font-size: 14pt;
 
 }
-
-
 
 .button {
   background-image: linear-gradient(to right, #6A6AF9 0%, #C28DF7 51%, #1B30D1 100%);
@@ -95,7 +77,6 @@ input[type=text] {
   text-decoration: none;
 }
 
-.card {}
 
 .mb-3 {
   margin: 5px;
@@ -116,8 +97,6 @@ input[type=text] {
   background-color: var(--main1) !important;
 }
 
-
-.container {}
 
 .ui-datepicker {
   background: var(--main4);
@@ -149,7 +128,3 @@ input[type=text] {
   text-shadow: 1px 0px 0px #fff;
   filter: dropshadow(color=#fff, offx=1, offy=0);
 }
-
-.container {}
-
-.weatherImg {}
