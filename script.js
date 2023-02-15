@@ -30,7 +30,7 @@ function callAPI(city) {
   // City to Geo Location
   // Geo Location API
   let geoQueryURL =
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    "https://api.openweathermap.org/geo/1.0/direct?q=" +
     userSearch +
     "&limit=1&appid=" +
     apiKey;
@@ -191,7 +191,7 @@ function callAPI(city) {
       // Call Activity API
       // Uses Activity Type and Number of Participants as Parameters
       const queryURL =
-        "http://www.boredapi.com/api/activity?type=" + activityType;
+        "https://www.boredapi.com/api/activity?type=" + activityType;
       $.ajax({
         url: queryURL,
         method: "GET",
