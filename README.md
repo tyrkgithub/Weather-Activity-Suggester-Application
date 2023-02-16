@@ -18,15 +18,17 @@
   
   <br/>
   
-  <p> Please find the link to my deployed application <a href="https://tyrkgithub.github.io/Password-Generator">here.</a> </p>
+  <p> Please find the link to our teams deployed application <a href="https://tyrkgithub.github.io/Weather-Activity-Suggester-Application/">here.</a> </p>
   
   <br/>
   
  <h2>User Story</h2>
+ 
   
   <br/>
   
-  <p>Fill<br/>
+  <p>As a user I want to be able to choose from the next five days to then see the weather outlook and have 3 activities suggested to me accordingly. The web application should be inviting, interactive and fun to use.
+<br/>
   </p>
   
   <br/>
@@ -56,7 +58,22 @@
 
   <br/>
  
-  <p>To complete this task I have found my one-on-one tutoring session to be highly resourceful. Things we discussed included: prompt, confirm, aler and isNaN. Another resource I have used is w3schools. This website explains how to use Javascript, give examples and has exercises for you to complete.<br/>
+  <p>
+  Styling:
+<li>https://gradientbuttons.colorion.co/</li>
+<li>https://cssgradient.io/gradient-backgrounds/</li>
+Information:
+<li>https://www.w3schools.com/</li>
+<li>https://stackoverflow.com/</li>
+<li>Assignments from the Web Application Development Course</li>
+APIS:
+<li>https://www.boredapi.com/</li>
+<li>https://developers.giphy.com/</li>
+<li>https://openweathermap.org</li>
+CODE:
+<li>https://jqueryui.com/datepicker/</li>
+<li>https://getbootstrap.com/docs/4.0/getting-started/introduction </li>
+<br/>
  <br/>
   
   <br/>
@@ -65,9 +82,11 @@
  
   <br/>
 
-  <p>Below is a screenshot of my password generator</p> 
+  <p>Below is a screenshot WASA</p> 
   
- <img width="618" alt="Untitled" src="https://user-images.githubusercontent.com/118772733/213035860-4433d3c7-b69f-4a95-933a-7bda46f9b922.png">
+
+![Mobile Screenshot](https://user-images.githubusercontent.com/118772733/219468123-8b297c9f-54ee-4134-82d4-a1ba9742f26a.png)
+
 
 
   <br/>
@@ -77,7 +96,7 @@
 
   <br/>
   
-  <p>In this part of my READ.ME page I include things which helped me to complete the project.</p>
+  <p>In this part of my READ.ME page, include are things which helped the team to complete the project.</p>
   
   <br/>
   
