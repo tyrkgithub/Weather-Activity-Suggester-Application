@@ -1,7 +1,7 @@
-# <h1>WASAP Weather Activity </h1>
+# <h1>WASA Weather Activity Suggestion Application </h1>
   <br/>
- <h2>My Task</h2> 
-   <p>This weeks challenge is creating Javascript code which generates a random password including the preferences of the user.</p>
+ <h2>Our Task</h2> 
+   <p>Our task this week in our Front End Web Development course is to create a website in a team and implementing what we have learnt on the course so far</p>
   
  <br/>
   <ul>
@@ -96,13 +96,13 @@ CODE:
 
   <br/>
   
-  <p>In this part of my READ.ME page, include are things which helped the team to complete the project.</p>
+  <p>In this part of the READ.ME page, we include things which helped the team to complete the project.</p>
   
   <br/>
   
   <ul>
-   <li>After learning about the spread syntax I was able to reduce the amount of code</li>
-   <li>In my one-to-one the tutor installed the Prettier extention on VS Code which helps your code to look better formated</li>
+   <li>Screen sharing and co-working is an efficient way to work on a collaberation</li>
+   <li>When working in collaberation it is important to understand others working styles and to know what each other is working on so we don't duplicate work</li>
 
    
 
